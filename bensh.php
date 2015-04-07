@@ -32,7 +32,7 @@ function hallo2($a) {
 /****/
 function mandel() {
 $w1=50;
-$h1=150;
+$h1=150; 
 $recen=-.45;
 $imcen=0.0;
 $r=0.7;
