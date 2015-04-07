@@ -6,4 +6,4 @@ php:
   - 7.0
   - hhvm
 
-script: php bensh.php
+script: php -d xdebug.default_enable=Off -d xdebug.coverage_enable=Off bensh.php
