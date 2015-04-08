@@ -7,13 +7,6 @@ php:
   - hhvm
 
 before_script:
-  - phpenv config-rm apc.ini
-  - phpenv config-rm memcache.ini
-  - phpenv config-rm memcached.ini
-  - phpenv config-rm mongo.ini
-  - phpenv config-rm amqp.ini
-  - phpenv config-rm zmq.ini
   - phpenv config-rm xdebug.ini
-  - phpenv config-rm redis.ini
 
 script: php bensh.php
