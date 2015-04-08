@@ -7,6 +7,6 @@ php:
   - hhvm
 
 before_script:
-  - phpenv config-rm xdebug.ini || :
+  - phpenv config-rm xdebug.ini || true
 
 script: php bensh.php
