@@ -35,10 +35,10 @@
   headers: { Accept: "application/vnd.travis-ci.2+json" },
   success: function(data) {
     var html = '';
-    data.builds.each(function (id, buildInfo) {
+    $.each(data.builds, (function (id, buildInfo) {
       
       html += '<h3> Build start at ' + buildInfo.started_at + '</h3>';
-      buildInfo.job_ids.each(function (id, jobInfo) {
+      $.each(buildInfo.job_ids, (function (id, jobInfo) {
           html += '<h4>Job ' + jobInfo + '</h4><div id="job-' + jobInfo + '"></div>';
           $.ajax({
             url: "https://api.travis-ci.org/logs/" + jobInfo,
