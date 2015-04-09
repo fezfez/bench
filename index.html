@@ -35,13 +35,12 @@
   headers: { Accept: "application/vnd.travis-ci.2+json" },
   success: function(data) {
     var html = '';
-    $.each(data.builds, (function (id, buildInfo) {
-      
-      html += '<h3> Build start at ' + buildInfo.started_at + '</h3>';
-      $.each(buildInfo.job_ids, (function (id, jobInfo) {
-          html += '<h4>Job ' + jobInfo + '</h4><div id="job-' + jobInfo + '"></div>';
+    $.each(data.builds, function (id, buildInfo) {
+      html += '<h3> Build ' + buildInfo.number + ' start at ' + buildInfo.started_at + '</h3>';
+      $.each(buildInfo.job_ids, function (id, jobInfo) {
+          html += '<h4>Job ' + buildInfo.config.php[id] + '</h4><div id="job-' + jobInfo + '"></div>';
           $.ajax({
-            url: "https://api.travis-ci.org/logs/" + jobInfo,
+            url: "https://api.travis-ci.org/jobs/" + jobInfo + "/logs",
             headers: { Accept: "application/vnd.travis-ci.2+json" },
             success: function(data) { console.log(data); },
         });
@@ -49,7 +48,7 @@
     });
     
     $('#bench-result').html(html);
-  },
+  }
 });
     
   </script>
