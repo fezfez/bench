@@ -35,7 +35,7 @@
   headers: { Accept: "application/vnd.travis-ci.2+json" },
   success: function(data) {
     var html = '';
-    data.build.each(function (id, buildInfo) {
+    data.builds.each(function (id, buildInfo) {
       
       html += '<h3> Build start at ' + buildInfo.started_at + '</h3>';
       buildInfo.job_ids.each(function (id, jobInfo) {
