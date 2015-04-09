@@ -35,14 +35,27 @@
   headers: { Accept: "application/vnd.travis-ci.2+json" },
   success: function(data) {
     var html = '';
+	var re = /Total.*(.[0-9]*[.][0-9]+)/; 
     $.each(data.builds, function (id, buildInfo) {
       html += '<h3> Build ' + buildInfo.number + ' start at ' + buildInfo.started_at + '</h3>';
-      $.each(buildInfo.job_ids, function (id, jobInfo) {
-          html += '<h4>Job ' + buildInfo.config.php[id] + '</h4><div id="job-' + jobInfo + '"></div>';
+      $.each(buildInfo.job_ids, function (id, jobId) {
+          html += '<h4>' + buildInfo.config.php[id] + ' : </h4><div id="job-' + jobId + '"></div>';
           $.ajax({
-            url: "https://api.travis-ci.org/jobs/" + jobInfo + "/logs",
+            url: "https://api.travis-ci.org/jobs/" + jobId,
             headers: { Accept: "application/vnd.travis-ci.2+json" },
-            success: function(data) { console.log(data); },
+            success: function(jobInfo) {
+				
+				$.ajax({
+					url: "https://api.travis-ci.org/logs/" + jobInfo.job.log_id,
+					headers: { Accept: "application/vnd.travis-ci.2+json" },
+					success: function(logInfo) {
+						var result = re.exec(logInfo.log.body);
+						if (result != null) {
+							$('#job-' + jobId).html(result[1]);
+						}
+					}
+				});
+			}
         });
       });
     });
