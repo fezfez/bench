@@ -10,4 +10,4 @@ php:
 before_script:
   - phpenv config-rm xdebug.ini || true
 
-script: php bensh.php
+script: php -c php.ini bensh.php
