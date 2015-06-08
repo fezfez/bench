@@ -256,7 +256,6 @@ function empty_bench($method)
 
 function empty_method1($var, $r)
 {
-    if ($var < 0) unset($var);
     $isEmpty = false;
     while ($r--)
     {
@@ -352,7 +351,6 @@ function empty_method8($var, $r)
 
 function empty_method9($var, $r)
 {
-    if ($var < 0) unset($var);
     $isEmpty = false;
     while ($r--)
     {
