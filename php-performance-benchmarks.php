@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(E_NONE);
+error_reporting(-1);
 
 $repetitions = 10000;
 
