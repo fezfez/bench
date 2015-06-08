@@ -10,5 +10,6 @@ php:
 before_script:
   - phpenv config-rm xdebug.ini || true
   - php -c php.ini bensh.php
+  - php -c php.ini php-performance-benchmarks.php
 
 script: php -c php.ini bensh.php
