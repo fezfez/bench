@@ -3,7 +3,7 @@
 error_reporting(-1);
 ini_set('display_errors', '1');
 
-$repetitions = 10000;
+$repetitions = 50000;
 
 function getmicrotime()
 {
